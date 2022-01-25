@@ -1,0 +1,35 @@
+#
+### SECURITY BASED CONFIGURATIONS
+#app:
+#  config:
+#    keycloak:
+#      url:  http://localhost:8180/auth
+#      realm: microservices-realm-techie
+#      client-secret: 401b047a-8f08-42a1-85c8-f3c791ea1c9f
+#      client-id: spring-cloud-gateway-client-techie
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          keycloak:
+#            authorization-uri: ${app.config.keycloak.url}/realms/${app.config.keycloak.realm}/protocol/openid-connect/auth
+#            jwk-set-uri: ${app.config.keycloak.url}/realms/${app.config.keycloak.realm}/protocol/openid-connect/certs
+#            token-uri: ${app.config.keycloak.url}/realms/${app.config.keycloak.realm}/protocol/openid-connect/token
+#            user-info-authentication-method: header
+#            user-info-uri: ${app.config.keycloak.url}/realms/${app.config.keycloak.realm}/protocol/openid-connect/userinfo
+#            user-name-attribute: preferred_username
+#        registration:
+#          internet-banking-core-client:
+#            authorization-grant-type: authorization_code
+#            client-id: ${app.config.keycloak.client-id}
+#            client-secret: ${app.config.keycloak.client-secret}
+#            #            client-id: internet-banking-core-client
+#            #            client-secret: d24b0b4b-0807-466e-8516-0db49d8e9bea
+#            provider: keycloak
+#            redirect-uri: http://localhost:8180/login/oauth2/code/keycloak
+#            scope: openid
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: ${app.config.keycloak.url}/realms/${app.config.keycloak.realm}/protocol/openid-connect/certs
+#
